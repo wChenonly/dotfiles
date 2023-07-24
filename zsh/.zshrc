@@ -59,3 +59,9 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/
 
 
 eval "$(zoxide init zsh)"
+
+eval "$(starship init zsh)"
+
+export STARSHIP_CONFIG=/Users/wchenonly/.config/starship/starship.toml
+
+
