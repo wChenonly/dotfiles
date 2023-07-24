@@ -118,7 +118,7 @@ alias d="nr dev"
 
 
 alias ls="exa -l --no-user --no-permissions"
-alias lss="dust"
+alias lss="dust -d 1 -R"
 
 
 alias nrm="nnrm"
