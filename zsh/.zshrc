@@ -123,6 +123,8 @@ alias lss="dust -d 1 -R"
 
 alias nrm="nnrm"
 
+alias cd="z"
+
 
 
 export PATH=/opt/homebrew/bin:$PATH
@@ -139,4 +141,4 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/
 
 
 
-source /Users/wchenonly/.config/broot/launcher/bash/br
+eval "$(zoxide init zsh)"
