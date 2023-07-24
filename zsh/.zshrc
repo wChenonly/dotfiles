@@ -117,8 +117,11 @@ alias b="nr build"
 alias d="nr dev"
 
 
+alias ls="exa -l --no-user --no-permissions"
+
 alias nrm="nnrm"
 
+alias lsd="lsd -l --total-size"
 
 
 export PATH=/opt/homebrew/bin:$PATH
