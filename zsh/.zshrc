@@ -118,10 +118,11 @@ alias d="nr dev"
 
 
 alias ls="exa -l --no-user --no-permissions"
+alias lss="dust"
+
 
 alias nrm="nnrm"
 
-alias lsd="lsd -l --total-size"
 
 
 export PATH=/opt/homebrew/bin:$PATH
@@ -137,3 +138,5 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 
 
+
+source /Users/wchenonly/.config/broot/launcher/bash/br
