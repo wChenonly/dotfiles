@@ -32,7 +32,7 @@ alias b="nr build"
 alias d="nr dev"
 alias release="nr release"
 
-alias clean="sudo mac-cleanup"
+alias clean="sudo mac-cleanup -f"
 
 
 # system
