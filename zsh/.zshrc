@@ -41,7 +41,7 @@ alias ls="exa -l --no-user --no-permissions"
 alias lssi="dust -d 1 -R -i"
 alias lss="dust -d 1 -R"
 alias cd="z"
-alias cat="bat"
+alias cat="bat --tabs=2 --theme=ansi"
 
 
 
