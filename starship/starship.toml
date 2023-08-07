@@ -8,3 +8,13 @@ add_newline = true
 [git_status]
 modified = '⇣${count}'
 staged = '+${count}'
+
+[character]
+success_symbol = '[➜](bold green) '
+error_symbol = '[✗](bold red) '
+
+[memory_usage]
+disabled = false
+threshold = -1
+format = '$symbol [${ram_pct}]($style)  '
+symbol = '🚀'
