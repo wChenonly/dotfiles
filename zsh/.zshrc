@@ -50,6 +50,8 @@ alias lss="dust -d 1 -R"
 alias cd="z"
 alias cat="bat --tabs=2 --theme=ansi"
 
+alias download="axel -n 40 -a -o /Users/wchenonly/Downloads"
+
 
 
 export PATH=/opt/homebrew/bin:$PATH
