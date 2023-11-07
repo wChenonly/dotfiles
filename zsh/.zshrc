@@ -7,6 +7,7 @@
   # source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -14,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="random"
 
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions you-should-use)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions you-should-use zsh-history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -24,6 +25,7 @@ source $ZSH/oh-my-zsh.sh
 alias gp="git pull origin --prune"
 alias gd="git branch | grep -v 'master' | xargs git branch -D"
 alias gst="git stash"
+
 
 # npm
 
@@ -47,7 +49,7 @@ alias clean="sudo mac-cleanup -f"
 alias ls="exa -l --no-user --no-permissions"
 alias lssi="dust -d 1 -R -i"
 alias lss="dust -d 1 -R"
-alias cd="z"
+# alias cd="z"
 alias cat="bat --tabs=2 --theme=ansi"
 
 alias download="axel -n 40 -a -o /Users/wchenonly/Downloads"
@@ -66,6 +68,7 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+eval "$(mcfly init zsh)"
 
 
 export STARSHIP_CONFIG=/Users/wchenonly/.config/starship/starship.toml
@@ -78,5 +81,18 @@ export STARSHIP_CONFIG=/Users/wchenonly/.config/starship/starship.toml
 # autojump
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
+# bun completions
+[ -s "/Users/wchenonly/.bun/_bun" ] && source "/Users/wchenonly/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/
+
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
