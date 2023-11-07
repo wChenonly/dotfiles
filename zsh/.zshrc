@@ -15,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="random"
 
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions you-should-use zsh-history-substring-search)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions you-should-use)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -46,10 +46,9 @@ alias clean="sudo mac-cleanup -f"
 
 # system
 
-alias ls="exa -l --no-user --no-permissions"
+alias ls="exa -l --no-user --no-permissions --icons"
 alias lssi="dust -d 1 -R -i"
 alias lss="dust -d 1 -R"
-# alias cd="z"
 alias cat="bat --tabs=2 --theme=ansi"
 
 alias download="axel -n 40 -a -o /Users/wchenonly/Downloads"
@@ -66,9 +65,14 @@ export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/
 
 
-eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(mcfly init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
+
+
+export MCFLY_RESULTS=50
+export MCFLY_PROMPT="🔍"
+
 
 
 export STARSHIP_CONFIG=/Users/wchenonly/.config/starship/starship.toml
@@ -90,9 +94,10 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
