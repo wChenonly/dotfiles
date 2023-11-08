@@ -35,8 +35,7 @@ alias clean="sudo mac-cleanup -f"
 
 
 # system
-
-alias ls="exa -l --no-user --no-permissions --icons"
+alias ls="eza -l --no-user --no-permissions --git-repos --git --time-style="relative" --icons -F"
 alias lssi="dust -d 1 -R -i"
 alias lss="dust -d 1 -R"
 alias cat="bat --tabs=2 --theme=ansi"
@@ -56,10 +55,9 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/
 
 
 eval "$(starship init zsh)"
-eval "$(mcfly init zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
-
+eval "$(mcfly init zsh)"
 export MCFLY_RESULTS=50
 export MCFLY_PROMPT="🔍"
 
