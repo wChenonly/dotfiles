@@ -72,5 +72,3 @@ export STARSHIP_CONFIG=/Users/wchenonly/.config/starship/starship.toml
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/
-
