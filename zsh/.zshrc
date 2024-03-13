@@ -26,7 +26,7 @@ alias ncu="ncu -i --format group"
 alias ncu-ws="ncu -i --format group -ws"
 
 alias nlist="npm list -g --depth 0"
-alias nplist="npm list -g --depth 0"
+alias nplist="pnpm list -g --depth 0"
 
 alias nrm="nnrm"
 
