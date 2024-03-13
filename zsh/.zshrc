@@ -1,11 +1,14 @@
+# CodeWhisperer pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 
 # ZSH_THEME="random"
 
+# fzf-tab暂时移除，因为安装了CodeWhisperer
 
-plugins=(git fzf-tab zsh-syntax-highlighting zsh-autosuggestions you-should-use)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions you-should-use)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -23,13 +26,22 @@ alias ncu="ncu -i --format group"
 alias ncu-ws="ncu -i --format group -ws"
 
 alias nlist="npm list -g --depth 0"
+alias nplist="npm list -g --depth 0"
 
 alias nrm="nnrm"
 
 # ni
 alias b="nr build"
+alias t="nr vitest || nr test"
+alias nid="ni -D"
+alias bb="nr build:all || nr all:build"
 alias d="nr dev"
 alias release="nr release"
+
+
+# update
+alias deps="bunx taze latest -w -r -i"
+
 
 alias clean="sudo mac-cleanup -f"
 
@@ -72,3 +84,10 @@ export STARSHIP_CONFIG=/Users/wchenonly/.config/starship/starship.toml
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+
+# tabtab source for packages
+# uninstall by removing these lines
+# [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+# CodeWhisperer post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
