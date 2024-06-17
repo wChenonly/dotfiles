@@ -44,7 +44,15 @@ alias deps="bunx taze latest -w -r -i"
 
 alias clean="sudo mac-cleanup -f"
 
-alias delete-n_m="find . -name "node_modules" -type d -exec rm -rf {} +"
+
+
+delete-n_m() {
+  find . -name "node_modules" -type d -print0 | while IFS= read -r -d $'\0' dir; do
+    printf "\033[1;33m删除⌛️ %s ...\033[0m\n" "${dir: -30}"
+    rm -rf "$dir"
+  done
+  printf "\n\033[1;32m删除完成👍.\033[0m\n"
+}
 
 
 # system
