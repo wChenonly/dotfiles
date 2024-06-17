@@ -1,5 +1,4 @@
-# CodeWhisperer pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
+# Q pre block. Keep at the top of this file.
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -8,7 +7,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # fzf-tab暂时移除，因为安装了CodeWhisperer
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions you-should-use)
+plugins=(git fzf-tab zsh-syntax-highlighting zsh-autosuggestions you-should-use)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -32,7 +31,7 @@ alias nrm="nnrm"
 
 # ni
 alias b="nr build"
-alias t="nr vitest || nr test"
+alias t="nr test || nr vitest "
 alias nid="ni -D"
 alias bb="nr build:all || nr all:build"
 alias d="nr dev"
@@ -44,6 +43,8 @@ alias deps="bunx taze latest -w -r -i"
 
 
 alias clean="sudo mac-cleanup -f"
+
+alias delete-n_m="find . -name "node_modules" -type d -exec rm -rf {} +"
 
 
 # system
@@ -85,9 +86,26 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
+# cd 时在右侧预览目录内容
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+
 # tabtab source for packages
 # uninstall by removing these lines
 # [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
-# CodeWhisperer post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Q post block. Keep at the bottom of this file.
