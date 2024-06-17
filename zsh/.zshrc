@@ -46,7 +46,7 @@ alias clean="sudo mac-cleanup -f"
 
 
 delete-n_m() {
-   start_time=$(date +%s)  # 记录开始时间
+  start_time=$(date +%s)  # 记录开始时间
 
   # 记录所有 node_modules 目录的数量
   all_node_modules_count=$(find . -name "node_modules" -type d | wc -l)
@@ -56,7 +56,7 @@ delete-n_m() {
 
   # 查找并删除顶层 node_modules 目录
   find . -name "node_modules" -type d -prune -print0 | while IFS= read -r -d $'\0' dir; do
-    printf "\033[1;33m删除⌛️ %s ...\033[0m\n" "${dir}"
+    printf "\033[1;35m删除 ⌛️ %s \033[0m\n" "${dir}"
 
     num_files=$(find "$dir" -type f | wc -l)  # 统计该目录下的文件数量
     rm -rf "$dir"  # 删除目录
@@ -65,13 +65,21 @@ delete-n_m() {
     total_files_deleted=$((total_files_deleted + num_files))  # 累加删除的文件数量
   done
 
+  # 删除锁文件
+  lock_files=("pnpm-lock.yaml" "package-lock.json" "yarn.lock" "bun.lockb")
+  for lock_file in "${lock_files[@]}"; do
+    find . -name "$lock_file" -type f -print0 | while IFS= read -r -d $'\0' file; do
+      printf "\n\033[1;36m删除 🔐 %s \033[0m\n" "${file}"
+      rm -f "$file"
+    done
+  done
+
   end_time=$(date +%s)  # 记录结束时间
   elapsed_time=$((end_time - start_time))  # 计算耗时
 
-  printf "\n\033[1;32m删除完成👍. 删除了 %d 个包的依赖, %d 个文件, 耗时 %d 秒。\033[0m\n" "$top_level_count" "$total_files_deleted" "$elapsed_time"
+  printf "\n\033[1;32m删除完成 👍. 删除了 %d 个包的依赖, %d 个文件, 耗时 %d 秒。\033[0m\n" "$top_level_count" "$total_files_deleted" "$elapsed_time"
   printf "\n\033[1;32m%d 个 node_modules 目录。\033[0m\n" "$all_node_modules_count"
 }
-
 
 # system
 alias ls="eza -l --no-user --no-permissions --git-repos --git --time-style="relative" --icons -F"
