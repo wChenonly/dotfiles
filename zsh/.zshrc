@@ -45,13 +45,31 @@ alias deps="bunx taze latest -w -r -i"
 alias clean="sudo mac-cleanup -f"
 
 
-
 delete-n_m() {
-  find . -name "node_modules" -type d -print0 | while IFS= read -r -d $'\0' dir; do
-    printf "\033[1;33m删除⌛️ %s ...\033[0m\n" "${dir: -30}"
-    rm -rf "$dir"
+   start_time=$(date +%s)  # 记录开始时间
+
+  # 记录所有 node_modules 目录的数量
+  all_node_modules_count=$(find . -name "node_modules" -type d | wc -l)
+
+  top_level_count=0  # 初始化顶层计数器
+  total_files_deleted=0  # 初始化文件删除计数器
+
+  # 查找并删除顶层 node_modules 目录
+  find . -name "node_modules" -type d -prune -print0 | while IFS= read -r -d $'\0' dir; do
+    printf "\033[1;33m删除⌛️ %s ...\033[0m\n" "${dir}"
+
+    num_files=$(find "$dir" -type f | wc -l)  # 统计该目录下的文件数量
+    rm -rf "$dir"  # 删除目录
+
+    top_level_count=$((top_level_count + 1))  # 顶层计数器加一
+    total_files_deleted=$((total_files_deleted + num_files))  # 累加删除的文件数量
   done
-  printf "\n\033[1;32m删除完成👍.\033[0m\n"
+
+  end_time=$(date +%s)  # 记录结束时间
+  elapsed_time=$((end_time - start_time))  # 计算耗时
+
+  printf "\n\033[1;32m删除完成👍. 删除了 %d 个包的依赖, %d 个文件, 耗时 %d 秒。\033[0m\n" "$top_level_count" "$total_files_deleted" "$elapsed_time"
+  printf "\n\033[1;32m%d 个 node_modules 目录。\033[0m\n" "$all_node_modules_count"
 }
 
 
