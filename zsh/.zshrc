@@ -79,7 +79,7 @@ delete-n_m() {
     total_size_to_delete=$((total_size_to_delete + dir_size))  # 累加待删除的总大小
 
     # 删除顶层 node_modules 目录
-    printf "\033[1;35m删除 ⌛️ %s \033[0m\n" "${dir}"
+    printf "\033[1;30m删除 ⌛️ %s \033[0m\n" "${dir}"
     rm -rf "$dir" # 删除目录
   done
 
