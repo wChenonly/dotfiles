@@ -84,7 +84,7 @@ delete-n_m() {
   done
 
   # 删除锁文件并统计大小
-  lock_files=("pnpm-lock.yaml" "package-lock.json" "yarn.lock" "bun.lock")
+  lock_files=("pnpm-lock.yaml" "package-lock.json" "yarn.lock" "bun.lockb")
   for lock_file in "${lock_files[@]}"; do
     while IFS= read -r -d $'\0' file; do
       file_size=$(calculate_dir_size "$file" 2>/dev/null) # 注意这里应该用 calculate_file_size，但 dust 通常用于目录
