@@ -5,27 +5,31 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # ZSH_THEME="random"
 
-# fzf-tab暂时移除，因为安装了CodeWhisperer
-
 plugins=(git fzf-tab zsh-syntax-highlighting zsh-autosuggestions you-should-use)
 
 source $ZSH/oh-my-zsh.sh
 
+show_and_execute() {
+  local GREEN='\033[0;32m'
+  local NO_COLOR='\033[0m'
+  echo "command:${GREEN} $@${NO_COLOR}"
+  command "$@"
+}
 
 # git
 
-alias gp="git pull origin --prune"
-alias gd="git branch | grep -v 'master' | xargs git branch -D"
-alias gst="git stash"
+alias gp="show_and_execute git pull origin --prune"
+alias gd="show_and_execute git branch | grep -v 'master' | xargs git branch -D"
+alias gst="show_and_execute git stash"
 
 
 # npm
 
-alias ncu="ncu -i --format group"
-alias ncu-ws="ncu -i --format group -ws"
+alias ncu="show_and_execute ncu -i --format group"
+alias ncu-ws="show_and_execute ncu -i --format group -ws"
 
-alias nlist="npm list -g --depth 0"
-alias nplist="pnpm list -g --depth 0"
+alias nlist="show_and_execute npm list -g --depth 0"
+alias nplist="show_and_execute pnpm list -g --depth 0"
 
 alias nrm="nnrm"
 
@@ -39,10 +43,10 @@ alias release="nr release"
 
 
 # update
-alias deps="bunx taze latest -w -r -i"
+alias deps="show_and_execute bunx taze latest -w -r -i"
 
 
-alias clean="sudo mac-cleanup -f"
+alias clean="show_and_execute sudo mac-cleanup -f"
 
 
 delete-n_m() {
