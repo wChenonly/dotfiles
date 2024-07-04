@@ -1,9 +1,9 @@
-# Q pre block. Keep at the top of this file.
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 
 # ZSH_THEME="random"
+
 
 plugins=(git fzf-tab zsh-syntax-highlighting zsh-autosuggestions you-should-use)
 
@@ -88,7 +88,7 @@ delete-n_m() {
   done
 
   # 删除锁文件并统计大小
-  lock_files=("pnpm-lock.yaml" "package-lock.json" "yarn.lock" "bun.lockb")
+  lock_files=("pnpm-lock.yaml" "package-lock.json" "yarn.lock" "bun.lock")
   for lock_file in "${lock_files[@]}"; do
     while IFS= read -r -d $'\0' file; do
       file_size=$(calculate_dir_size "$file" 2>/dev/null) # 注意这里应该用 calculate_file_size，但 dust 通常用于目录
@@ -133,10 +133,10 @@ ask_for_reinstall() {
 
 
 # system
-alias ls="eza -l --no-user --no-permissions --git-repos --git --time-style="relative" --icons -F"
-alias lssi="dust -d 1 -R -i"
-alias lss="dust -d 1 -R"
-alias cat="bat --tabs=2 --theme=ansi"
+alias ls="show_and_execute  eza -l --no-user --no-permissions --git-repos --git --time-style="relative" --icons -F"
+alias lssi="show_and_execute dust -d 1 -R -i"
+alias lss="show_and_execute dust -d 1 -R"
+alias cat="show_and_execute bat --tabs=2 --theme=ansi"
 
 alias download="axel -n 40 -a -o /Users/wchenonly/Downloads"
 
@@ -187,10 +187,15 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 # cd 时在右侧预览目录内容
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 
-# tabtab source for packages
-# uninstall by removing these lines
-# [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Q post block. Keep at the bottom of this file.
+
+# Suppress last login message
+if [ -f ~/.hushlogin ]; then
+  :
+fi
+
+
+
+
