@@ -35,7 +35,8 @@ alias nrm="nnrm"
 
 # ni
 alias b="nr build"
-alias t="nr test || nr vitest "
+alias bf="nr build:force"
+alias t="nr test || nr vitest"
 alias nid="ni -D"
 alias bb="nr build:all || nr all:build"
 alias d="nr dev"
@@ -148,8 +149,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
-
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/
 
 
 eval "$(starship init zsh)"
