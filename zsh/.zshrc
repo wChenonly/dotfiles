@@ -199,3 +199,17 @@ fi
 
 
 
+
+# pnpm
+export PNPM_HOME="/Users/wchenonly/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
+export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+
+CARGO_UNSTABLE_SPARSE_REGISTRY=true
