@@ -24,10 +24,6 @@ alias gst="show_and_execute git stash"
 
 
 # npm
-
-alias ncu="show_and_execute ncu -i --format group"
-alias ncu-ws="show_and_execute ncu -i --format group -ws"
-
 alias nlist="show_and_execute npm list -g --depth 0"
 alias nplist="show_and_execute pnpm list -g --depth 0"
 
