@@ -142,10 +142,6 @@ alias download="axel -n 40 -a -o /Users/wchenonly/Downloads"
 
 export PATH=/opt/homebrew/bin:$PATH
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
 
 
 eval "$(starship init zsh)"
@@ -209,3 +205,17 @@ export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 
 CARGO_UNSTABLE_SPARSE_REGISTRY=true
+
+
+
+# eval "$(fnm env --use-on-cd --shell zsh)"
+
+# fnm
+FNM_PATH="/Users/wchenonly/Library/Application Support/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/Users/wchenonly/Library/Application Support/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+
+
